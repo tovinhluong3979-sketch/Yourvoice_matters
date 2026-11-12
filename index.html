@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vẻ đẹp của tiếng nói – Những tiếng nói tạo nên thay đổi. Dự án học tập Ngữ văn 11 đậm đà bản sắc Việt.">
+  <title>Vẻ đẹp của tiếng nói | Hoa Hậu Tiếng Nói – Your Voice Matters</title>
+
+  <!-- Phông chữ Việt chuẩn mực, sang trọng: Cormorant Garamond, Playfair Display & Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            giayDo: '#fbf7ef',
+            gamKem: '#f3ead6',
+            doSon: '#9b1b1f',
+            doSonDam: '#6e1013',
+            doSonTuoi: '#b7242a',
+            vangDong: '#d4a843',
+            vangAnh: '#f0c96b',
+            vangNhat: '#faecc8',
+            ngocBich: '#165b53',
+            ngocDam: '#0e3f39',
+            mucTram: '#182832',
+            chuMo: '#525f66'
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            'gam': '0 22px 50px -15px rgba(155, 27, 31, 0.18)',
+            'vang': '0 12px 32px -6px rgba(212, 168, 67, 0.45)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --crimson-royal: linear-gradient(135deg, #6e1013 0%, #9b1b1f 52%, #b7242a 100%);
+      --jade-royal: linear-gradient(135deg, #0c3530 0%, #165b53 55%, #0e3f39 100%);
+    }
+
+    body {
+      background-color: #fbf7ef;
+      color: #182832;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Họa tiết nền giấy dó & gấm vóc Việt Nam */
+    .bg-giay-do-pattern {
+      background-color: #fbf7ef;
+      background-image:
+        radial-gradient(rgba(212, 168, 67, 0.16) 1px, transparent 1px),
+        radial-gradient(rgba(155, 27, 31, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Đường diềm hoa văn truyền thống Việt Nam */
+    .viet-border-top {
+      background-image: repeating-linear-gradient(
+        90deg,
+        #d4a843 0px, #d4a843 16px,
+        #9b1b1f 16px, #9b1b1f 32px,
+        #165b53 32px, #165b53 48px
+      );
+      height: 5px;
+    }
+
+    /* Thanh tiến trình cuộn trang ánh vàng kim */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, #9b1b1f, #d4a843, #f0c96b, #165b53);
+      z-index: 60;
+      box-shadow: 0 0 12px rgba(240, 201, 107, 0.8);
+      transition: width 0.1s ease-out;
+    }
+
+    /* Chữ ánh vàng đồng lấp lánh */
+    .text-gold-royal {
+      background: linear-gradient(110deg, #9e6f19 10%, #f5d888 40%, #d4a843 62%, #fae7b2 82%, #9e6f19 100%);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShine 4s linear infinite;
+    }
+
+    @keyframes goldShine {
+      to { background-position: 220% center; }
+    }
+
+    /* Nút hoàng gia đỏ son - vàng đồng */
+    .btn-son-vang {
+      background: linear-gradient(135deg, #9b1b1f 0%, #b7242a 55%, #7a1216 100%);
+      color: #faecc8;
+      border: 1.5px solid #f0c96b;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-son-vang::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -130%;
+      width: 65%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(250, 236, 200, 0.5), transparent);
+      transform: skewX(-24deg);
+      transition: left 0.65s ease;
+    }
+    .btn-son-vang:hover::before {
+      left: 160%;
+    }
+    .btn-son-vang:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -6px rgba(155, 27, 31, 0.48), 0 0 0 2px rgba(240, 201, 107, 0.55);
+    }
+
+    .btn-vang-dong {
+      background: linear-gradient(135deg, #d4a843 0%, #f0c96b 50%, #b88828 100%);
+      color: #4d1010;
+      font-weight: 800;
+      border: 1px solid #fae5a5;
+      transition: all 0.3s ease;
+    }
+    .btn-vang-dong:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px -5px rgba(212, 168, 67, 0.6);
+      filter: brightness(1.04);
+    }
+
+    /* Trống đồng Đông Sơn xoay chậm làm hào quang sân khấu */
+    @keyframes spinBronzeDrum {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .trong-dong-spin {
+      animation: spinBronzeDrum 70s linear infinite;
+    }
+
+    @keyframes spinReverseSlow {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .trong-dong-reverse {
+      animation: spinReverseSlow 52s linear infinite;
+    }
+
+    /* Rung nhẹ khi đánh trống hội khai mạc */
+    @keyframes drumShake {
+      0%, 100% { transform: scale(1); }
+      20% { transform: scale(1.025) rotate(-0.5deg); }
+      40% { transform: scale(0.985) rotate(0.5deg); }
+      60% { transform: scale(1.015) rotate(-0.3deg); }
+      80% { transform: scale(0.995) rotate(0.3deg); }
+    }
+    .drum-shake-active {
+      animation: drumShake 0.55s ease-in-out;
+    }
+
+    /* Nhịp sóng âm thanh nhịp đập trái tim Việt Nam */
+    .voice-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 3.5px;
+      height: 26px;
+    }
+    .voice-wave span {
+      display: block;
+      width: 3.5px;
+      border-radius: 99px;
+      background: linear-gradient(to top, #9b1b1f, #f0c96b);
+      animation: heartbeatWave 1.35s ease-in-out infinite;
+    }
+    .voice-wave span:nth-child(1) { height: 7px; animation-delay: 0.0s; }
+    .voice-wave span:nth-child(2) { height: 18px; animation-delay: 0.12s; }
+    .voice-wave span:nth-child(3) { height: 26px; animation-delay: 0.24s; }
+    .voice-wave span:nth-child(4) { height: 12px; animation-delay: 0.36s; }
+    .voice-wave span:nth-child(5) { height: 22px; animation-delay: 0.48s; }
+    .voice-wave span:nth-child(6) { height: 14px; animation-delay: 0.6s; }
+    .voice-wave span:nth-child(7) { height: 8px; animation-delay: 0.72s; }
+
+    @keyframes heartbeatWave {
+      0%, 100% { transform: scaleY(0.42); opacity: 0.72; }
+      35% { transform: scaleY(1.12); opacity: 1; }
+      55% { transform: scaleY(0.65); opacity: 0.85; }
+      75% { transform: scaleY(0.95); opacity: 0.95; }
+    }
+
+    /* Thẻ nghiêng 3D & nâng nhẹ sang trọng */
+    .card-3d-viet {
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .card-3d-viet:hover {
+      box-shadow: 0 26px 52px -14px rgba(155, 27, 31, 0.22);
+      border-color: #d4a843;
+    }
+
+    /* Khung ảnh tư liệu giữ nguyên tỷ lệ không cắt chữ */
+    .art-frame {
+      position: relative;
+      background: linear-gradient(180deg, #fffdf8 0%, #f4ebd8 100%);
+      border: 1.5px solid #e2cfa4;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .art-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .art-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Hiệu ứng xuất hiện khi cuộn trang */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Ruy băng danh hiệu Hoa hậu */
+    .sash-badge {
+      background: linear-gradient(90deg, #9b1b1f 0%, #b7242a 50%, #9b1b1f 100%);
+      border-top: 1px solid #f0c96b;
+      border-bottom: 1px solid #f0c96b;
+      box-shadow: 0 4px 12px rgba(155, 27, 31, 0.28);
+    }
+
+    /* Thanh kết nối lộ trình 4 bước */
+    .road-glow {
+      background: linear-gradient(180deg, #d4a843 0%, #9b1b1f 50%, #165b53 100%);
+    }
+  </style>
+</head>
+<body class="bg-giay-do-pattern antialiased selection:bg-doSon selection:text-vangNhat">
+
+  <!-- Thanh tiến trình cuộn trang ánh vàng kim -->
+  <div id="scrollProgress"></div>
+
+  <!-- Canvas Cánh hoa sen & nhũ vàng rơi nhẹ nhàng toàn trang -->
+  <canvas id="lotusCanvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
+
+  <!-- Đường diềm hoa văn truyền thống trên cùng -->
+  <div class="viet-border-top w-full"></div>
+
+  <!-- ==================== HEADER SÂN KHẤU HOA HẬU VIỆT NAM ==================== -->
+  <header class="sticky top-0 z-30 bg-giayDo/95 backdrop-blur-md border-b border-vangDong/40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      <!-- Logo Vương miện Hoa sen & Trống đồng -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-doSon via-doSonTuoi to-doSonDam border-2 border-vangAnh flex items-center justify-center shadow-vang group-hover:scale-105 transition-transform">
+          <!-- SVG Vương miện Hoa sen & Mặt trời Trống đồng -->
+          <svg class="w-7 h-7 text-vangAnh" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8C28 16 25 22 25 28C25 32 28 35 32 35C36 35 39 32 39 28C39 22 36 16 32 8Z" fill="currentColor"/>
+            <path d="M21 15C16 21 14 27 16 32C18 35 22 36 25 34C22 29 21 22 21 15Z" fill="currentColor" opacity="0.88"/>
+            <path d="M43 15C48 21 50 27 48 32C46 35 42 36 39 34C42 29 43 22 43 15Z" fill="currentColor" opacity="0.88"/>
+            <path d="M10 26C8 32 10 38 15 40C18 41 21 40 22 37C17 35 13 31 10 26Z" fill="currentColor" opacity="0.72"/>
+            <path d="M54 26C56 32 54 38 49 40C46 41 43 40 42 37C47 35 51 31 54 26Z" fill="currentColor" opacity="0.72"/>
+            <path d="M14 45H50L47 51H17L14 45Z" fill="currentColor"/>
+            <circle cx="32" cy="48" r="2" fill="#9b1b1f"/>
+          </svg>
+        </div>
+        <div>
+          <span class="block font-extrabold tracking-[0.14em] text-sm sm:text-base text-doSon">YOUR VOICE MATTERS</span>
+          <span class="block text-[11px] font-semibold tracking-[0.18em] text-ngocBich uppercase">Hoa Hậu Tiếng Nói · Vẻ Đẹp Việt</span>
+        </div>
+      </a>
+
+      <!-- Menu điều hướng Desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-mucTram">
+        <a href="#about" class="hover:text-doSon transition-colors py-1 border-b-2 border-transparent hover:border-vangDong">Thông điệp</a>
+        <a href="#teams" class="hover:text-doSon transition-colors py-1 border-b-2 border-transparent hover:border-vangDong">Ba tiếng nói</a>
+        <a href="#project" class="hover:text-doSon transition-colors py-1 border-b-2 border-transparent hover:border-vangDong">Dự án</a>
+        <a href="#gallery" class="hover:text-doSon transition-colors py-1 border-b-2 border-transparent hover:border-vangDong">Lan tỏa</a>
+        <a href="#join" class="btn-son-vang px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold shadow-sm">Góp tiếng nói</a>
+      </nav>
+
+      <!-- Nút mở trình đơn Mobile -->
+      <button id="menuBtn" aria-label="Mở trình đơn" class="md:hidden p-2.5 rounded-xl border border-vangDong/60 bg-white text-doSon hover:bg-gamKem transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Mobile xổ xuống -->
+    <div id="navLinks" class="hidden md:hidden bg-giayDo border-t border-vangDong/40 px-6 py-4 space-y-3 shadow-lg">
+      <a href="#about" class="block py-2 font-semibold text-mucTram hover:text-doSon">01 · Thông điệp dự án</a>
+      <a href="#teams" class="block py-2 font-semibold text-mucTram hover:text-doSon">02 · Ba tiếng nói tranh tài</a>
+      <a href="#project" class="block py-2 font-semibold text-mucTram hover:text-doSon">03 · Lộ trình hành động</a>
+      <a href="#gallery" class="block py-2 font-semibold text-mucTram hover:text-doSon">04 · Góc lan tỏa & Triển lãm</a>
+      <a href="#join" class="block py-2.5 text-center rounded-full btn-son-vang font-bold text-sm">05 · Cùng góp tiếng nói</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- ==================== HERO: SÂN KHẤU ĐÊM CHUNG KẾT HOA HẬU TIẾNG NÓI ==================== -->
+    <section id="heroStage" class="relative overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-vangDong/40" style="background: radial-gradient(circle at 78% 24%, rgba(212, 168, 67, 0.24), transparent 52%), linear-gradient(125deg, #fbf7ef 0%, #f4e8cf 50%, #ecd9b4 100%);">
+      
+      <!-- Hoa văn Trống đồng Đông Sơn khổng lồ xoay chậm làm hào quang sân khấu -->
+      <div class="pointer-events-none absolute -right-28 -top-24 sm:-right-16 sm:-top-16 w-[430px] h-[430px] sm:w-[600px] sm:h-[600px] opacity-[0.14] text-doSon">
+        <svg class="w-full h-full trong-dong-spin" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="192" stroke="currentColor" stroke-width="3"/>
+          <circle cx="200" cy="200" r="176" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <circle cx="200" cy="200" r="152" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="200" cy="200" r="126" stroke="currentColor" stroke-width="1.5" stroke-dasharray="10 6"/>
+          <circle cx="200" cy="200" r="95" stroke="currentColor" stroke-width="2"/>
+          <circle cx="200" cy="200" r="62" stroke="currentColor" stroke-width="1.5"/>
+          <!-- Mặt trời 14 tia Đông Sơn -->
+          <circle cx="200" cy="200" r="28" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="3">
+            <line x1="200" y1="145" x2="200" y2="168"/>
+            <line x1="200" y1="232" x2="200" y2="255"/>
+            <line x1="145" y1="200" x2="168" y2="200"/>
+            <line x1="232" y1="200" x2="255" y2="200"/>
+            <line x1="161" y1="161" x2="177" y2="177"/>
+            <line x1="223" y1="223" x2="239" y2="239"/>
+            <line x1="239" y1="161" x2="223" y2="177"/>
+            <line x1="177" y1="223" x2="161" y2="239"/>
+            <line x1="178" y1="149" x2="188" y2="170"/>
+            <line x1="212" y1="230" x2="222" y2="251"/>
+            <line x1="222" y1="149" x2="212" y2="170"/>
+            <line x1="188" y1="230" x2="178" y2="251"/>
+          </g>
+          <!-- Vòng chim Lạc cách điệu -->
+          <g fill="currentColor">
+            <path d="M200 32 L214 44 L198 42 L205 52 Z"/>
+            <path d="M368 200 L356 214 L358 198 L348 205 Z"/>
+            <path d="M200 368 L186 356 L202 358 L195 348 Z"/>
+            <path d="M32 200 L44 186 L42 202 L52 195 Z"/>
+            <path d="M318 82 L316 100 L306 88 L302 99 Z"/>
+            <path d="M318 318 L300 316 L312 306 L301 302 Z"/>
+            <path d="M82 318 L84 300 L94 312 L98 301 Z"/>
+            <path d="M82 82 L100 84 L88 94 L99 98 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Hoa văn mây ngũ sắc góc trái dưới -->
+      <svg class="pointer-events-none absolute left-0 bottom-0 w-72 h-28 text-vangDong/25" viewBox="0 0 300 100" fill="none">
+        <path d="M-10 90 C30 50, 70 95, 110 65 C140 42, 175 85, 215 65 C245 50, 270 80, 300 75 L300 100 L-10 100 Z" fill="currentColor"/>
+      </svg>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <!-- Cột nội dung chính bên trái -->
+          <div class="lg:col-span-7">
+            <!-- Dải băng cuộc thi & sóng âm thanh nhịp đập trái tim Việt Nam -->
+            <div class="inline-flex flex-wrap items-center gap-3 px-4 py-2 rounded-full bg-white/90 border border-vangDong/60 shadow-sm mb-6">
+              <span class="w-2.5 h-2.5 rounded-full bg-doSon animate-ping"></span>
+              <span class="text-xs font-extrabold tracking-[0.16em] text-doSon uppercase">DỰ ÁN HỌC TẬP · NÓI VÀ NGHE · NGỮ VĂN 11</span>
+              <div class="voice-wave" title="Nhịp sóng tiếng nói Việt Nam">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="mb-2 flex items-center gap-2 text-ngocBich font-bold text-xs sm:text-sm tracking-[0.2em] uppercase">
+              <span>✦</span>
+              <span>CUỘC THI HOA HẬU TRÍ TUỆ &amp; BẢN LĨNH NGÔN TỪ</span>
+              <span>✦</span>
+            </div>
+
+            <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.04] text-mucTram mb-6">
+              Vẻ đẹp của <span class="text-doSon italic relative inline-block">tiếng nói
+                <svg class="w-full h-3 -mt-1 text-vangDong" viewBox="0 0 200 12" fill="none">
+                  <path d="M2 9C55 2 145 2 198 9" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-chuMo leading-relaxed max-w-2xl mb-8">
+              Những tiếng nói khác biệt cùng gặp nhau để nhìn nhận vấn đề, chia sẻ góc nhìn và khơi nguồn thay đổi tích cực trong cuộc sống.
+            </p>
+
+            <!-- Các nút hành động + Nút Trống hội khai mạc -->
+            <div class="flex flex-wrap items-center gap-3.5">
+              <a href="#teams" class="btn-son-vang px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base inline-flex items-center gap-2 shadow-gam">
+                <span>Khám phá ba chủ đề</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+              </a>
+              <a href="#project" class="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-ngocBich text-ngocBich bg-white/80 hover:bg-ngocBich hover:text-white transition-all">
+                Tìm hiểu dự án
+              </a>
+              <button id="drumFestivalBtn" type="button" class="btn-vang-dong px-5 py-3.5 rounded-xl text-sm inline-flex items-center gap-2 shadow-vang" title="Khởi động tiếng trống hội khai mạc & tung hoa sen vàng">
+                <span>🥁</span>
+                <span>Đánh trống khai hội</span>
+              </button>
+            </div>
+
+            <!-- Thanh chỉ số danh giá của cuộc thi -->
+            <div class="mt-10 pt-6 border-t border-vangDong/40 grid grid-cols-3 gap-4 max-w-lg">
+              <div>
+                <div class="font-serif text-2xl sm:text-3xl font-bold text-doSon">03</div>
+                <div class="text-xs font-semibold text-chuMo">Bảng thi tiếng nói</div>
+              </div>
+              <div>
+                <div class="font-serif text-2xl sm:text-3xl font-bold text-ngocBich">06</div>
+                <div class="text-xs font-semibold text-chuMo">Tư liệu tranh &amp; ảnh</div>
+              </div>
+              <div>
+                <div class="font-serif text-2xl sm:text-3xl font-bold text-vangDong">100%</div>
+                <div class="text-xs font-semibold text-chuMo">Bản sắc &amp; Trí tuệ Việt</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột Sân khấu Vương miện & 3 Khung Ảnh Đại Diện 3 Chủ Đề bên phải -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl p-5 sm:p-6 bg-gradient-to-b from-doSonDam via-doSon to-doSonDam border-2 border-vangAnh shadow-gam text-giayDo">
+              <!-- Vương miện Hoa sen vàng đỉnh khung -->
+              <div class="flex items-center justify-between border-b border-vangAnh/30 pb-3.5 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-vangAnh text-lg">👑</span>
+                  <span class="text-xs font-bold tracking-[0.16em] text-vangNhat uppercase">Sân Khấu Chung Kết · 3 Bảng Thi</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-vangAnh/20 text-vangAnh text-[11px] font-bold border border-vangAnh/40">Ngữ văn 11</span>
+              </div>
+
+              <!-- 3 Thẻ xem nhanh 3 chủ đề kèm ảnh trực quan -->
+              <div class="space-y-3">
+                <!-- Bảng 1 -->
+                <a href="#ekip-01" class="flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-vangAnh/25 transition group">
+                  <div class="w-16 h-14 rounded-xl overflow-hidden bg-giayDo shrink-0 border border-vangAnh/60">
+                    <img data-img-key="digital_1" src="27-06-2021-hi-hoa-van-hoa-ung-xu-tren-mang-xa-hoi-F9527D22.jpg" alt="Digital Generation" class="w-full h-full object-contain">
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="text-[10px] font-extrabold tracking-widest text-vangAnh uppercase">EKIP 01 · DIGITAL GENERATION</div>
+                    <div class="font-serif font-bold text-sm sm:text-base text-white truncate group-hover:text-vangNhat">Văn hóa ứng xử trên mạng xã hội</div>
+                  </div>
+                  <span class="text-vangAnh group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <!-- Bảng 2 -->
+                <a href="#ekip-02" class="flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-vangAnh/25 transition group">
+                  <div class="w-16 h-14 rounded-xl overflow-hidden bg-giayDo shrink-0 border border-vangAnh/60">
+                    <img data-img-key="equal_1" src="image-20221118135546-1.jpeg" alt="Equal Voices" class="w-full h-full object-contain">
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="text-[10px] font-extrabold tracking-widest text-vangAnh uppercase">EKIP 02 · EQUAL VOICES</div>
+                    <div class="font-serif font-bold text-sm sm:text-base text-white truncate group-hover:text-vangNhat">Bình đẳng giới – Nhịp cầu hạnh phúc</div>
+                  </div>
+                  <span class="text-vangAnh group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <!-- Bảng 3 -->
+                <a href="#ekip-03" class="flex items-center gap-3.5 p-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-vangAnh/25 transition group">
+                  <div class="w-16 h-14 rounded-xl overflow-hidden bg-giayDo shrink-0 border border-vangAnh/60">
+                    <img data-img-key="green_2" src="loi-song.jpg" alt="Green Future" class="w-full h-full object-contain">
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="text-[10px] font-extrabold tracking-widest text-vangAnh uppercase">EKIP 03 · GREEN FUTURE</div>
+                    <div class="font-serif font-bold text-sm sm:text-base text-white truncate group-hover:text-vangNhat">Sống xanh – Trách nhiệm thế hệ trẻ</div>
+                  </div>
+                  <span class="text-vangAnh group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+
+              <!-- Dải băng rôn Hoa hậu dưới khung -->
+              <div class="mt-4 pt-3 border-t border-vangAnh/30 flex items-center justify-between text-xs text-vangNhat">
+                <span>🌸 Nhấn vào ảnh bất kỳ để phóng to</span>
+                <button type="button" onclick="openQnAModal(0)" class="underline font-bold text-vangAnh hover:text-white">Thử thi ứng xử →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 01 / TINH THẦN DỰ ÁN ==================== -->
+    <section id="about" class="py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+          <div>
+            <div class="text-xs font-extrabold tracking-[0.2em] text-doSon uppercase mb-2">01 / TINH THẦN DỰ ÁN</div>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-mucTram leading-tight">
+              Một tiếng nói có thể<br>mở ra nhiều suy nghĩ.
+            </h2>
+          </div>
+          <p class="text-chuMo max-w-md text-sm sm:text-base leading-relaxed">
+            Chúng ta không chỉ học cách trình bày một quan điểm. Chúng ta học cách lắng nghe, kiểm chứng thông tin, tôn trọng khác biệt và biến điều mình tin tưởng thành hành động có trách nhiệm.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-6 items-stretch reveal-up">
+          <!-- Khung Tuyên Ngôn Gấm Đỏ Viền Vàng -->
+          <div class="lg:col-span-5 rounded-3xl p-8 sm:p-9 text-giayDo relative overflow-hidden flex flex-col justify-between border-2 border-vangDong shadow-gam" style="background: var(--crimson-royal);">
+            <!-- Hoa sen chìm trang trí -->
+            <svg class="absolute -right-8 -bottom-8 w-44 h-44 text-vangAnh/15 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M50 10 C42 28, 38 42, 38 54 C38 64, 43 70, 50 70 C57 70, 62 64, 62 54 C62 42, 58 28, 50 10 Z"/>
+              <path d="M28 24 C18 38, 16 52, 22 62 C27 68, 34 68, 38 63 C32 52, 30 38, 28 24 Z"/>
+              <path d="M72 24 C82 38, 84 52, 78 62 C73 68, 66 68, 62 63 C68 52, 70 38, 72 24 Z"/>
+            </svg>
+
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vangAnh/15 border border-vangAnh/40 text-vangAnh text-xs font-bold tracking-widest uppercase mb-6">
+                <span>🪷</span>
+                <span>Tuyên Ngôn Tiếng Nói</span>
+              </div>
+              <p class="font-serif italic text-2xl sm:text-3xl leading-snug text-white">
+                “Nói bằng lí lẽ. Lắng nghe bằng sự tôn trọng. Hành động bằng trách nhiệm.”
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-vangAnh/30 flex items-center justify-between">
+              <small class="text-vangNhat font-bold tracking-[0.18em] text-xs uppercase">YOUR VOICE MATTERS</small>
+              <span class="text-vangAnh text-sm">✦ ✦ ✦</span>
+            </div>
+          </div>
+
+          <!-- 3 Nguyên Tắc Vàng -->
+          <div class="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+            <div class="card-3d-viet bg-white rounded-2xl p-6 border border-vangDong/45 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-doSon/10 border border-doSon/25 flex items-center justify-center font-serif font-bold text-2xl text-doSon mb-5">01</div>
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-2">Chính kiến rõ ràng</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Quan điểm rõ ràng, có chính kiến và biết đặt vấn đề.</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-gamKem text-[11px] font-bold text-doSon uppercase tracking-wider">Bản lĩnh mở lời</div>
+            </div>
+
+            <div class="card-3d-viet bg-white rounded-2xl p-6 border border-vangDong/45 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-ngocBich/10 border border-ngocBich/25 flex items-center justify-center font-serif font-bold text-2xl text-ngocBich mb-5">02</div>
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-2">Lí lẽ xác đáng</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Lí lẽ thuyết phục, dẫn chứng đáng tin cậy và được kiểm chứng.</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-gamKem text-[11px] font-bold text-ngocBich uppercase tracking-wider">Trí tuệ soi đường</div>
+            </div>
+
+            <div class="card-3d-viet bg-white rounded-2xl p-6 border border-vangDong/45 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-vangDong/15 border border-vangDong/40 flex items-center justify-center font-serif font-bold text-2xl text-doSonDam mb-5">03</div>
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-2">Đối thoại nhân văn</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Đối thoại văn minh, phản biện ý kiến chứ không công kích con người.</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-gamKem text-[11px] font-bold text-vangDong uppercase tracking-wider">Văn hóa lắng nghe</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 02 / BA TIẾNG NÓI (TÍCH HỢP ĐỦ 6 HÌNH ẢNH CHO 3 CHỦ ĐỀ) ==================== -->
+    <section id="teams" class="py-16 sm:py-24 bg-gamKem/75 border-y border-vangDong/40 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+          <div>
+            <div class="text-xs font-extrabold tracking-[0.2em] text-doSon uppercase mb-2">02 / BA TIẾNG NÓI</div>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-mucTram leading-tight">
+              Ba vấn đề – Ba góc nhìn
+            </h2>
+          </div>
+          <p class="text-chuMo max-w-md text-sm sm:text-base leading-relaxed">
+            Mỗi nhóm lựa chọn một vấn đề gần gũi với đời sống học sinh, phát triển quan điểm và đề xuất cách tạo nên thay đổi tích cực.
+          </p>
+        </div>
+
+        <!-- Lưới 3 Ekip Tranh Tài -->
+        <div class="grid lg:grid-cols-3 gap-7">
+          
+          <!-- ===== EKIP 01: DIGITAL GENERATION ===== -->
+          <article id="ekip-01" class="card-3d-viet reveal-up bg-white rounded-3xl overflow-hidden border-2 border-vangDong/50 flex flex-col shadow-sm">
+            <!-- Ruy băng danh hiệu đầu thẻ -->
+            <div class="sash-badge px-5 py-2.5 flex items-center justify-between text-vangNhat">
+              <span class="text-xs font-extrabold tracking-[0.18em] uppercase">EKIP 01 · BẢNG SỐ HÓA</span>
+              <span class="text-xs font-bold text-vangAnh">👑 Tiếng nói Trí tuệ</span>
+            </div>
+
+            <div class="p-6 pb-4">
+              <h3 class="font-serif font-bold text-2xl sm:text-3xl text-mucTram mb-2">Digital Generation</h3>
+              <p class="font-bold text-doSon text-base leading-snug">
+                Mạng xã hội: Kết nối con người hay tạo nên những khoảng cách?
+              </p>
+            </div>
+
+            <!-- Trưng bày đủ 2 hình ảnh của Ekip 01 (object-fit: contain giữ nguyên chữ trên tranh) -->
+            <div class="px-6 mb-4">
+              <div class="grid grid-cols-2 gap-2.5">
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('digital_1', 'Tranh biếm họa: Văn hóa ứng xử trên mạng xã hội', 'Ekip 01 – Digital Generation: Phản ánh thực trạng tranh cãi gay gắt, sa đà vào thông tin tiêu cực trên mạng xã hội.')">
+                  <img data-img-key="digital_1" src="27-06-2021-hi-hoa-van-hoa-ung-xu-tren-mang-xa-hoi-F9527D22.jpg" alt="Biếm họa văn hóa ứng xử trên mạng xã hội">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('digital_2', 'Tranh cổ động: Ứng xử có văn hóa trên mạng xã hội', 'Ekip 01 – Digital Generation: Cảnh báo nạn ném đá hội đồng, đề cao lòng nhân ái và trách nhiệm phát ngôn trên không gian mạng.')">
+                  <img data-img-key="digital_2" src="6901d42e08dcb36fd59dfd66.jpg" alt="Ứng xử có văn hóa trên mạng xã hội">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-chuMo italic mt-1.5 text-center">Nhấn vào từng bức tranh để phóng to thảo luận trên lớp</p>
+            </div>
+
+            <div class="px-6 pb-6 flex-1 flex flex-col">
+              <p class="text-chuMo text-sm leading-relaxed mb-4">
+                Từ một lượt chia sẻ, bình luận hay bức ảnh được đăng tải, chúng ta nhìn lại trách nhiệm của mỗi người trong không gian số.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Ứng xử số</span>
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Tin giả</span>
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Tôn trọng riêng tư</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-giayDo border border-vangDong/35 text-xs text-mucTram mb-5">
+                <strong class="text-doSon">Gợi ý sản phẩm:</strong> Bản tin học đường, infographic, podcast ngắn hoặc video tình huống.
+              </div>
+
+              <!-- Nút tương tác sân khấu Hoa hậu -->
+              <div class="mt-auto pt-3 border-t border-gamKem flex items-center justify-between gap-2">
+                <button type="button" onclick="openQnAModal(0)" class="px-3.5 py-2 rounded-xl bg-doSon/10 hover:bg-doSon hover:text-white text-doSon font-bold text-xs transition flex items-center gap-1.5">
+                  <span>🎤</span>
+                  <span>Thi ứng xử &amp; Gợi ý</span>
+                </button>
+                <a href="#join" class="text-ngocBich font-bold text-xs sm:text-sm hover:text-doSon transition">Xem cách tham gia →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===== EKIP 02: EQUAL VOICES ===== -->
+          <article id="ekip-02" class="card-3d-viet reveal-up bg-white rounded-3xl overflow-hidden border-2 border-vangDong/50 flex flex-col shadow-sm">
+            <div class="sash-badge px-5 py-2.5 flex items-center justify-between text-vangNhat">
+              <span class="text-xs font-extrabold tracking-[0.18em] uppercase">EKIP 02 · BẢNG BÌNH ĐẲNG</span>
+              <span class="text-xs font-bold text-vangAnh">👑 Tiếng nói Nhân ái</span>
+            </div>
+
+            <div class="p-6 pb-4">
+              <h3 class="font-serif font-bold text-2xl sm:text-3xl text-mucTram mb-2">Equal Voices</h3>
+              <p class="font-bold text-doSon text-base leading-snug">
+                Bình đẳng giới: Có phải mọi định kiến giới đều bắt đầu từ những điều rất nhỏ?
+              </p>
+            </div>
+
+            <!-- Trưng bày đủ 2 hình ảnh của Ekip 02 -->
+            <div class="px-6 mb-4">
+              <div class="grid grid-cols-2 gap-2.5">
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('equal_1', 'Tranh cổ động: Bình đẳng giới – Nhịp cầu hạnh phúc', 'Ekip 02 – Equal Voices: Khẳng định quyền bình đẳng thiêng liêng của mọi người ngay từ khi sinh ra.')">
+                  <img data-img-key="equal_1" src="image-20221118135546-1.jpeg" alt="Bình đẳng giới - Nhịp cầu hạnh phúc">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('equal_2', 'Poster: Bình đẳng giới – Chấm dứt bạo lực, vun đắp yêu thương', 'Ekip 02 – Equal Voices: Phụ nữ tự tin phát triển sự nghiệp, nam giới sẻ chia việc nhà và chăm sóc gia đình.')">
+                  <img data-img-key="equal_2" src="images.jpg" alt="Bình đẳng giới - Chấm dứt bạo lực, vun đắp yêu thương">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-chuMo italic mt-1.5 text-center">Nhấn vào từng bức tranh để phóng to thảo luận trên lớp</p>
+            </div>
+
+            <div class="px-6 pb-6 flex-1 flex flex-col">
+              <p class="text-chuMo text-sm leading-relaxed mb-4">
+                Từ những lời khen, lời chúc tưởng chừng vô tư, chúng ta nhận diện các khuôn mẫu giới và suy nghĩ về quyền được lựa chọn của mỗi người.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="px-3 py-1 rounded-full bg-doSon/10 text-doSon text-xs font-bold">Định kiến giới</span>
+                <span class="px-3 py-1 rounded-full bg-doSon/10 text-doSon text-xs font-bold">Tôn trọng lựa chọn</span>
+                <span class="px-3 py-1 rounded-full bg-doSon/10 text-doSon text-xs font-bold">Cơ hội bình đẳng</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-giayDo border border-vangDong/35 text-xs text-mucTram mb-5">
+                <strong class="text-doSon">Gợi ý sản phẩm:</strong> Tiểu phẩm đối thoại, video ngắn, bộ thông điệp truyền thông.
+              </div>
+
+              <div class="mt-auto pt-3 border-t border-gamKem flex items-center justify-between gap-2">
+                <button type="button" onclick="openQnAModal(1)" class="px-3.5 py-2 rounded-xl bg-doSon/10 hover:bg-doSon hover:text-white text-doSon font-bold text-xs transition flex items-center gap-1.5">
+                  <span>🎤</span>
+                  <span>Thi ứng xử &amp; Gợi ý</span>
+                </button>
+                <a href="#join" class="text-ngocBich font-bold text-xs sm:text-sm hover:text-doSon transition">Xem cách tham gia →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===== EKIP 03: GREEN FUTURE ===== -->
+          <article id="ekip-03" class="card-3d-viet reveal-up bg-white rounded-3xl overflow-hidden border-2 border-vangDong/50 flex flex-col shadow-sm">
+            <div class="sash-badge px-5 py-2.5 flex items-center justify-between text-vangNhat">
+              <span class="text-xs font-extrabold tracking-[0.18em] uppercase">EKIP 03 · BẢNG MÔI TRƯỜNG</span>
+              <span class="text-xs font-bold text-vangAnh">👑 Tiếng nói Tương lai</span>
+            </div>
+
+            <div class="p-6 pb-4">
+              <h3 class="font-serif font-bold text-2xl sm:text-3xl text-mucTram mb-2">Green Future</h3>
+              <p class="font-bold text-doSon text-base leading-snug">
+                Sống xanh: Trào lưu nhất thời hay trách nhiệm của thế hệ trẻ?
+              </p>
+            </div>
+
+            <!-- Trưng bày đủ 2 hình ảnh của Ekip 03 -->
+            <div class="px-6 mb-4">
+              <div class="grid grid-cols-2 gap-2.5">
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('green_1', 'Hoạt động thực tế: Chiến dịch dọn rác làm sạch bờ biển Việt Nam', 'Ekip 03 – Green Future: Tuổi trẻ chung tay thu gom rác thải nhựa, trả lại vẻ đẹp nguyên sơ cho biển đảo quê hương.')">
+                  <img data-img-key="green_1" src="don-rac-bo-bien-3.jpg" alt="Chiến dịch dọn rác làm sạch bờ biển">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+                <div class="art-frame h-40 p-1.5 group" onclick="openLightbox('green_2', 'Hoạt động cộng đồng: Trồng cây xanh giữ màu xanh đất Việt', 'Ekip 03 – Green Future: Nhiều thế hệ cùng chung tay vun trồng cây xanh, lan tỏa lối sống bền vững mỗi ngày.')">
+                  <img data-img-key="green_2" src="loi-song.jpg" alt="Trồng cây xanh bảo vệ môi trường">
+                  <span class="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-mucTram/80 text-white text-[10px] font-semibold">🔍 Xem rõ</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-chuMo italic mt-1.5 text-center">Nhấn vào từng bức ảnh để phóng to thảo luận trên lớp</p>
+            </div>
+
+            <div class="px-6 pb-6 flex-1 flex flex-col">
+              <p class="text-chuMo text-sm leading-relaxed mb-4">
+                Từ những thói quen hằng ngày, chúng ta cùng bàn về tiêu dùng có trách nhiệm và những hành động thiết thực vì môi trường.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Tiêu dùng bền vững</span>
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Giảm rác thải</span>
+                <span class="px-3 py-1 rounded-full bg-ngocBich/10 text-ngocBich text-xs font-bold">Hành động xanh</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-giayDo border border-vangDong/35 text-xs text-mucTram mb-5">
+                <strong class="text-doSon">Gợi ý sản phẩm:</strong> Infographic, thử thách sống xanh, video hoặc nhật kí hành động.
+              </div>
+
+              <div class="mt-auto pt-3 border-t border-gamKem flex items-center justify-between gap-2">
+                <button type="button" onclick="openQnAModal(2)" class="px-3.5 py-2 rounded-xl bg-doSon/10 hover:bg-doSon hover:text-white text-doSon font-bold text-xs transition flex items-center gap-1.5">
+                  <span>🎤</span>
+                  <span>Thi ứng xử &amp; Gợi ý</span>
+                </button>
+                <a href="#join" class="text-ngocBich font-bold text-xs sm:text-sm hover:text-doSon transition">Xem cách tham gia →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 03 / TỪ LỜI NÓI ĐẾN HÀNH ĐỘNG ==================== -->
+    <section id="project" class="py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+          <div>
+            <div class="text-xs font-extrabold tracking-[0.2em] text-doSon uppercase mb-2">03 / TỪ LỜI NÓI ĐẾN HÀNH ĐỘNG</div>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-mucTram leading-tight">
+              Tiếng nói không dừng<br>lại trên sân khấu.
+            </h2>
+          </div>
+          <p class="text-chuMo max-w-md text-sm sm:text-base leading-relaxed">
+            Sau phần trình bày và phản biện, mỗi ekip tiếp tục phát triển thông điệp thành một sản phẩm truyền thông có thể chia sẻ trong cộng đồng học đường.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-start reveal-up">
+          <!-- Thẻ định hướng dự án -->
+          <div class="lg:col-span-5 rounded-3xl p-7 sm:p-8 bg-gradient-to-br from-ngocDam via-ngocBich to-ngocDam text-giayDo border-2 border-vangDong shadow-lg">
+            <div class="w-12 h-12 rounded-2xl bg-vangAnh/20 border border-vangAnh/50 flex items-center justify-center text-2xl mb-5">🪷</div>
+            <h3 class="font-serif font-bold text-2xl text-vangNhat mb-3">
+              Vẻ đẹp của tiếng nói – Những tiếng nói tạo nên thay đổi
+            </h3>
+            <p class="text-giayDo/90 text-sm sm:text-base leading-relaxed mb-6">
+              Mục tiêu của dự án là đưa kiến thức và quan điểm đã học vào đời sống. Sản phẩm cần ngắn gọn, chính xác, dễ tiếp cận và khuyến khích một hành động tích cực cụ thể.
+            </p>
+            <div class="p-4 rounded-2xl bg-white/10 border border-vangAnh/30 text-xs text-vangNhat flex items-center gap-3">
+              <span class="text-xl">👑</span>
+              <span>Hành trình 4 bước chinh phục Vương miện Tiếng nói lan tỏa cộng đồng.</span>
+            </div>
+          </div>
+
+          <!-- Lộ trình 4 bước có thanh kết nối động -->
+          <div class="lg:col-span-7 relative pl-6 sm:pl-8 space-y-6">
+            <!-- Đường kết nối dọc -->
+            <div class="road-glow absolute left-[19px] sm:left-[27px] top-4 bottom-8 w-1 rounded-full"></div>
+
+            <!-- Bước 01 -->
+            <div class="relative pl-8 sm:pl-10 group">
+              <div class="absolute -left-6 sm:-left-8 top-0 w-10 h-10 rounded-full bg-doSon border-2 border-vangAnh text-vangNhat font-serif font-bold text-sm flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">01</div>
+              <div class="bg-white rounded-2xl p-5 border border-vangDong/40 shadow-sm hover:border-doSon transition">
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-1">Thống nhất thông điệp</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Xác định điều nhóm muốn người xem suy nghĩ hoặc thay đổi sau khi tiếp nhận sản phẩm.</p>
+              </div>
+            </div>
+
+            <!-- Bước 02 -->
+            <div class="relative pl-8 sm:pl-10 group">
+              <div class="absolute -left-6 sm:-left-8 top-0 w-10 h-10 rounded-full bg-doSon border-2 border-vangAnh text-vangNhat font-serif font-bold text-sm flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">02</div>
+              <div class="bg-white rounded-2xl p-5 border border-vangDong/40 shadow-sm hover:border-doSon transition">
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-1">Lựa chọn hình thức</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Thiết kế infographic, video ngắn, bài viết, podcast hoặc bộ quy tắc hành động phù hợp với chủ đề.</p>
+              </div>
+            </div>
+
+            <!-- Bước 03 -->
+            <div class="relative pl-8 sm:pl-10 group">
+              <div class="absolute -left-6 sm:-left-8 top-0 w-10 h-10 rounded-full bg-ngocBich border-2 border-vangAnh text-vangNhat font-serif font-bold text-sm flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">03</div>
+              <div class="bg-white rounded-2xl p-5 border border-vangDong/40 shadow-sm hover:border-ngocBich transition">
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-1">Kiểm chứng và hoàn thiện</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Kiểm tra nguồn dẫn, tính chính xác, bản quyền hình ảnh/âm thanh và sự phù hợp của ngôn từ trước khi gửi giáo viên.</p>
+              </div>
+            </div>
+
+            <!-- Bước 04 -->
+            <div class="relative pl-8 sm:pl-10 group">
+              <div class="absolute -left-6 sm:-left-8 top-0 w-10 h-10 rounded-full bg-vangDong border-2 border-doSon text-doSonDam font-serif font-bold text-sm flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">04</div>
+              <div class="bg-white rounded-2xl p-5 border border-vangDong/40 shadow-sm hover:border-vangDong transition">
+                <h3 class="font-serif font-bold text-lg text-mucTram mb-1">Chia sẻ và lan tỏa</h3>
+                <p class="text-chuMo text-sm leading-relaxed">Công bố sản phẩm qua kênh được nhà trường/giáo viên cho phép; khuyến khích người xem thực hiện một hành động cụ thể.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 04 / GÓC LAN TỎA & TRIỂN LÃM 6 TÁC PHẨM ==================== -->
+    <section id="gallery" class="py-16 sm:py-24 text-giayDo relative overflow-hidden border-y-2 border-vangDong" style="background: linear-gradient(145deg, #4b0b0e 0%, #781317 48%, #3c090b 100%);">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-up">
+          <div>
+            <div class="text-xs font-extrabold tracking-[0.2em] text-vangAnh uppercase mb-2">04 / GÓC LAN TỎA</div>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-white leading-tight">
+              Mỗi hành động nhỏ,<br>một thay đổi có thật.
+            </h2>
+          </div>
+          <p class="text-vangNhat/90 max-w-md text-sm sm:text-base leading-relaxed">
+            Khu vực này dành để đăng tải sản phẩm sau khi được giáo viên kiểm duyệt. Nội dung bên dưới là định hướng để các nhóm phát triển.
+          </p>
+        </div>
+
+        <!-- 3 Thẻ Hành Động Cam Kết Có Nút Thả Tim / Hưởng Ứng -->
+        <div class="grid md:grid-cols-3 gap-6 mb-14 reveal-up">
+          <!-- Cam kết 01 -->
+          <div class="rounded-3xl p-7 bg-white/10 backdrop-blur-sm border border-vangAnh/35 flex flex-col justify-between hover:bg-white/15 transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-serif text-3xl font-bold text-vangAnh">01</span>
+                <span class="px-2.5 py-1 rounded-full bg-vangAnh/15 text-vangAnh text-[11px] font-bold">Digital Generation</span>
+              </div>
+              <h3 class="font-serif font-bold text-xl text-white mb-2.5">Think before you share</h3>
+              <p class="text-vangNhat/85 text-sm leading-relaxed mb-6">
+                Kiểm chứng trước khi chia sẻ. Tôn trọng quyền riêng tư. Không tiếp tay cho bình luận gây tổn thương.
+              </p>
+            </div>
+            <button type="button" onclick="pledgeAction(this, 'count-1')" class="w-full py-3 px-4 rounded-xl bg-vangAnh/20 hover:bg-vangDong hover:text-doSonDam text-vangNhat border border-vangAnh/50 font-bold text-xs sm:text-sm transition flex items-center justify-between">
+              <span>🪷 Tôi cam kết ứng xử văn minh</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-doSonDam/80 text-vangAnh font-extrabold"><span id="count-1">128</span> ♥</span>
+            </button>
+          </div>
+
+          <!-- Cam kết 02 -->
+          <div class="rounded-3xl p-7 bg-white/10 backdrop-blur-sm border border-vangAnh/35 flex flex-col justify-between hover:bg-white/15 transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-serif text-3xl font-bold text-vangAnh">02</span>
+                <span class="px-2.5 py-1 rounded-full bg-vangAnh/15 text-vangAnh text-[11px] font-bold">Equal Voices</span>
+              </div>
+              <h3 class="font-serif font-bold text-xl text-white mb-2.5">Respect every choice</h3>
+              <p class="text-vangNhat/85 text-sm leading-relaxed mb-6">
+                Không áp đặt khuôn mẫu. Ghi nhận năng lực và cá tính. Chia sẻ trách nhiệm trong học tập và cuộc sống.
+              </p>
+            </div>
+            <button type="button" onclick="pledgeAction(this, 'count-2')" class="w-full py-3 px-4 rounded-xl bg-vangAnh/20 hover:bg-vangDong hover:text-doSonDam text-vangNhat border border-vangAnh/50 font-bold text-xs sm:text-sm transition flex items-center justify-between">
+              <span>🪷 Tôi cam kết tôn trọng bình đẳng</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-doSonDam/80 text-vangAnh font-extrabold"><span id="count-2">142</span> ♥</span>
+            </button>
+          </div>
+
+          <!-- Cam kết 03 -->
+          <div class="rounded-3xl p-7 bg-white/10 backdrop-blur-sm border border-vangAnh/35 flex flex-col justify-between hover:bg-white/15 transition">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-serif text-3xl font-bold text-vangAnh">03</span>
+                <span class="px-2.5 py-1 rounded-full bg-vangAnh/15 text-vangAnh text-[11px] font-bold">Green Future</span>
+              </div>
+              <h3 class="font-serif font-bold text-xl text-white mb-2.5">Start small, live green</h3>
+              <p class="text-vangNhat/85 text-sm leading-relaxed mb-6">
+                Hạn chế đồ dùng một lần. Sử dụng tài nguyên hợp lí. Duy trì thói quen xanh mỗi ngày.
+              </p>
+            </div>
+            <button type="button" onclick="pledgeAction(this, 'count-3')" class="w-full py-3 px-4 rounded-xl bg-vangAnh/20 hover:bg-vangDong hover:text-doSonDam text-vangNhat border border-vangAnh/50 font-bold text-xs sm:text-sm transition flex items-center justify-between">
+              <span>🪷 Tôi cam kết sống xanh mỗi ngày</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-doSonDam/80 text-vangAnh font-extrabold"><span id="count-3">156</span> ♥</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Triển lãm 6 Tư liệu Tranh & Ảnh Thực Tế Của 3 Chủ Đề -->
+        <div class="pt-10 border-t border-vangAnh/30 reveal-up">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <div>
+              <span class="text-xs font-extrabold tracking-[0.18em] text-vangAnh uppercase">TRIỂN LÃM TƯ LIỆU MINH HỌA</span>
+              <h3 class="font-serif text-2xl font-bold text-white">6 Tác Phẩm Truyền Cảm Hứng Của 3 Bảng Thi</h3>
+            </div>
+            <span class="text-xs text-vangNhat/80">Bấm vào từng tác phẩm để xem chi tiết kích thước lớn</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('digital_1', 'Tranh biếm họa: Văn hóa ứng xử trên mạng xã hội', 'Ekip 01 – Digital Generation')">
+              <img data-img-key="digital_1" src="27-06-2021-hi-hoa-van-hoa-ung-xu-tren-mang-xa-hoi-F9527D22.jpg" alt="Mạng xã hội">
+              <div class="text-[10px] font-bold text-doSon text-center pt-1 truncate">01. Mạng xã hội</div>
+            </div>
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('digital_2', 'Tranh cổ động: Ứng xử có văn hóa trên mạng xã hội', 'Ekip 01 – Digital Generation')">
+              <img data-img-key="digital_2" src="6901d42e08dcb36fd59dfd66.jpg" alt="Ứng xử văn hóa">
+              <div class="text-[10px] font-bold text-doSon text-center pt-1 truncate">02. Ứng xử văn hóa</div>
+            </div>
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('equal_1', 'Tranh cổ động: Bình đẳng giới – Nhịp cầu hạnh phúc', 'Ekip 02 – Equal Voices')">
+              <img data-img-key="equal_1" src="image-20221118135546-1.jpeg" alt="Nhịp cầu hạnh phúc">
+              <div class="text-[10px] font-bold text-doSon text-center pt-1 truncate">03. Nhịp cầu hạnh phúc</div>
+            </div>
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('equal_2', 'Poster: Bình đẳng giới – Chấm dứt bạo lực, vun đắp yêu thương', 'Ekip 02 – Equal Voices')">
+              <img data-img-key="equal_2" src="images.jpg" alt="Vun đắp yêu thương">
+              <div class="text-[10px] font-bold text-doSon text-center pt-1 truncate">04. Vun đắp yêu thương</div>
+            </div>
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('green_1', 'Hoạt động thực tế: Dọn rác làm sạch bờ biển', 'Ekip 03 – Green Future')">
+              <img data-img-key="green_1" src="don-rac-bo-bien-3.jpg" alt="Dọn rác bờ biển">
+              <div class="text-[10px] font-bold text-ngocBich text-center pt-1 truncate">05. Dọn rác bờ biển</div>
+            </div>
+            <div class="art-frame h-44 p-1.5 flex flex-col" onclick="openLightbox('green_2', 'Hoạt động cộng đồng: Trồng cây xanh bảo vệ môi trường', 'Ekip 03 – Green Future')">
+              <img data-img-key="green_2" src="loi-song.jpg" alt="Trồng cây xanh">
+              <div class="text-[10px] font-bold text-ngocBich text-center pt-1 truncate">06. Trồng cây xanh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 05 / CÙNG GÓP TIẾNG NÓI ==================== -->
+    <section id="join" class="py-16 sm:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 reveal-up">
+        <div class="bg-white rounded-3xl p-7 sm:p-10 lg:p-12 border-2 border-vangDong/60 shadow-gam relative overflow-hidden">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7">
+              <div class="text-xs font-extrabold tracking-[0.2em] text-doSon uppercase mb-2">05 / CÙNG GÓP TIẾNG NÓI</div>
+              <h2 class="font-display font-bold text-3xl sm:text-5xl text-mucTram mb-4">Bạn muốn bắt đầu từ đâu?</h2>
+              <p class="text-chuMo text-base leading-relaxed mb-4">
+                Hãy chọn một vấn đề bạn quan tâm, chia sẻ góc nhìn bằng lí lẽ và dẫn chứng đáng tin cậy, sau đó đề xuất một hành động vừa sức để cùng thực hiện.
+              </p>
+              <p class="text-xs sm:text-sm text-chuMo bg-giayDo p-4 rounded-2xl border border-vangDong/35 mb-6">
+                Đối với học sinh tham gia dự án: gửi sản phẩm cho giáo viên phụ trách theo hướng dẫn của lớp. Chỉ đăng tải hình ảnh, tên và thông tin cá nhân khi đã được cho phép.
+              </p>
+
+              <div class="flex flex-wrap items-center gap-3.5">
+                <a href="mailto:giaovien@example.com?subject=San%20pham%20du%20an%20Your%20Voice%20Matters" class="btn-son-vang px-6 py-3.5 rounded-xl font-bold text-sm inline-flex items-center gap-2">
+                  <span>✉️</span>
+                  <span>Gửi sản phẩm qua Email</span>
+                </a>
+                <button type="button" onclick="toggleQuickForm()" class="px-5 py-3.5 rounded-xl font-bold text-sm border-2 border-ngocBich text-ngocBich hover:bg-ngocBich hover:text-white transition">
+                  📝 Điền phiếu đăng ký nhanh
+                </button>
+              </div>
+            </div>
+
+            <!-- Phiếu ghi nhận tiếng nói trực tiếp trên trang -->
+            <div class="lg:col-span-5">
+              <form id="voiceSubmitForm" class="bg-giayDo rounded-2xl p-6 border border-vangDong/50 space-y-3.5">
+                <div class="flex items-center justify-between border-b border-vangDong/30 pb-2.5">
+                  <span class="font-serif font-bold text-lg text-doSon">Phiếu Gửi Thông Điệp</span>
+                  <span class="text-xs font-bold text-ngocBich">Ngữ văn 11</span>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-mucTram mb-1">Tên nhóm / Thí sinh đại diện</label>
+                  <input type="text" id="studentTeam" required placeholder="VD: Nhóm Hoa Sen – Lớp 11A1" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-vangDong/50 text-sm focus:outline-none focus:border-doSon">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-mucTram mb-1">Chọn bảng thi tiếng nói</label>
+                  <select id="studentTopic" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-vangDong/50 text-sm focus:outline-none focus:border-doSon">
+                    <option value="Ekip 01 – Digital Generation">Ekip 01 – Digital Generation (Mạng xã hội)</option>
+                    <option value="Ekip 02 – Equal Voices">Ekip 02 – Equal Voices (Bình đẳng giới)</option>
+                    <option value="Ekip 03 – Green Future">Ekip 03 – Green Future (Sống xanh)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-mucTram mb-1">Thông điệp cốt lõi &amp; Hành động đề xuất</label>
+                  <textarea id="studentMessage" rows="3" required placeholder="Chia sẻ luận điểm chính hoặc đường dẫn sản phẩm của nhóm..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-vangDong/50 text-sm focus:outline-none focus:border-doSon"></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-vang-dong py-3 rounded-xl text-sm shadow-sm">
+                  👑 Gửi tiếng nói lên sân khấu
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-chuMo mt-4 px-2">
+          Lưu ý cho giáo viên: thay địa chỉ email mẫu bằng địa chỉ nhận bài chính thức hoặc thay nút này bằng liên kết Google Form/Google Drive của lớp trước khi công bố.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER BẢN SẮC VIỆT NAM ==================== -->
+  <footer class="bg-mucTram text-giayDo py-10 border-t-4 border-vangDong">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-center sm:text-left">
+        <div class="font-extrabold tracking-[0.14em] text-vangAnh text-sm">YOUR VOICE MATTERS</div>
+        <small class="text-giayDo/75 text-xs">Vẻ đẹp của tiếng nói · Dự án học tập Ngữ văn 11</small>
+      </div>
+      <small class="text-vangNhat/85 font-medium text-xs text-center sm:text-right">
+        Speak with reason. Listen with respect. Act with responsibility.
+      </small>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL 1: THI ỨNG XỬ HOA HẬU & GỢI Ý LUẬN ĐIỂM (ĐỒNG HỒ 60 GIÂY) ==================== -->
+  <div id="qnaModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="bg-giayDo border-2 border-vangDong rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeIn_0.25s_ease]">
+      <button type="button" onclick="closeQnAModal()" aria-label="Đóng hộp thoại" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-vangDong/50 text-mucTram hover:bg-doSon hover:text-white font-bold flex items-center justify-center transition">✕</button>
+
+      <div class="flex items-center gap-2 text-xs font-extrabold tracking-[0.18em] text-doSon uppercase mb-2">
+        <span>👑</span>
+        <span id="qnaBadge">VÒNG THI ỨNG XỬ · EKIP 01</span>
+      </div>
+      <h3 id="qnaTitle" class="font-serif font-bold text-2xl sm:text-3xl text-mucTram mb-4">Digital Generation</h3>
+
+      <!-- Thẻ câu hỏi ứng xử bốc thăm -->
+      <div class="rounded-2xl p-5 bg-gradient-to-r from-doSonDam to-doSon text-white border border-vangAnh mb-5">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-vangAnh">🎤 Câu hỏi ứng xử sân khấu</span>
+          <button type="button" onclick="nextQnAQuestion()" class="px-2.5 py-1 rounded-lg bg-vangAnh/20 hover:bg-vangAnh hover:text-doSonDam text-vangNhat text-xs font-bold transition">
+            🎲 Đổi câu hỏi khác
+          </button>
+        </div>
+        <p id="qnaQuestionText" class="font-serif italic text-lg sm:text-xl leading-relaxed text-vangNhat"></p>
+      </div>
+
+      <!-- Đồng hồ đếm ngược 60 giây trả lời ứng xử -->
+      <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-vangDong/45 mb-5">
+        <div class="flex items-center gap-3">
+          <div id="timerDisplay" class="w-14 h-14 rounded-2xl bg-ngocBich text-vangAnh font-serif font-bold text-2xl flex items-center justify-center shadow-inner">
+            60s
+          </div>
+          <div>
+            <div class="font-bold text-sm text-mucTram">Đồng hồ trả lời ứng xử</div>
+            <div class="text-xs text-chuMo">Rèn luyện tư duy mạch lạc trong 60 giây</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" id="startTimerBtn" onclick="startQnATimer()" class="btn-son-vang px-4 py-2 rounded-xl text-xs font-bold">▶ Bắt đầu tính giờ</button>
+          <button type="button" onclick="resetQnATimer()" class="px-3.5 py-2 rounded-xl border border-vangDong/60 text-xs font-bold text-mucTram hover:bg-gamKem">↺ Đặt lại</button>
+        </div>
+      </div>
+
+      <!-- Dàn ý gợi ý luận điểm Ngữ văn 11 -->
+      <div class="bg-white rounded-2xl p-5 border border-vangDong/40">
+        <div class="text-xs font-extrabold tracking-wider text-ngocBich uppercase mb-2.5">💡 Gợi ý cấu trúc bài nói &amp; dẫn chứng thuyết phục</div>
+        <ul id="qnaPointsList" class="space-y-2 text-sm text-mucTram list-disc pl-5"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: LIGHTBOX XEM PHÓNG TO TRANH & ẢNH ==================== -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm" onclick="closeLightbox(event)">
+    <div class="bg-giayDo border-2 border-vangDong rounded-3xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl relative" onclick="event.stopPropagation()">
+      <button type="button" onclick="closeLightbox()" aria-label="Đóng ảnh" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-doSon text-white font-bold flex items-center justify-center hover:scale-105 transition">✕</button>
+      <div class="rounded-2xl bg-white border border-vangDong/40 p-2 flex items-center justify-center max-h-[68vh] overflow-hidden">
+        <img id="lightboxImg" src="" alt="Phóng to tư liệu" class="max-h-[64vh] w-auto object-contain rounded-xl">
+      </div>
+      <div class="mt-4 px-1">
+        <h4 id="lightboxTitle" class="font-serif font-bold text-lg sm:text-xl text-doSon"></h4>
+        <p id="lightboxDesc" class="text-xs sm:text-sm text-chuMo mt-1"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HỘP THÔNG BÁO SÂN KHẤU (THAY THẾ ALERT) ==================== -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-doSonDam text-giayDo border-2 border-vangAnh rounded-2xl p-4 shadow-2xl">
+    <div class="flex items-start gap-3">
+      <span class="text-xl">🌸</span>
+      <div class="flex-1 text-sm">
+        <div id="toastTitle" class="font-bold text-vangAnh">Thông báo</div>
+        <div id="toastBody" class="text-xs text-vangNhat mt-0.5 leading-relaxed"></div>
+      </div>
+      <button type="button" onclick="hideToast()" class="text-vangAnh hover:text-white font-bold text-xs">✕</button>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT TƯƠNG TÁC SINH ĐỘNG & FALLBACK ẢNH THÔNG MINH ==================== -->
+  <script>
+    // 1. HỆ THỐNG FALLBACK THÔNG MINH CHO 6 HÌNH ẢNH (VẼ TRANH MINH HỌA SẮC NÉT NẾU CHẠY ĐỘC LẬP)
+    function createArtFallback(key) {
+      const c = document.createElement('canvas');
+      c.width = 720;
+      c.height = 500;
+      const ctx = c.getContext('2d');
+
+      const configs = {
+        digital_1: {
+          bg1: '#fef3c7', bg2: '#fde68a', accent: '#9b1b1f', badge: 'EKIP 01 · BIẾM HỌA MẠNG XÃ HỘI',
+          title: 'MẠNG XÃ HỘI', sub: 'Tranh cãi ảo – Tổn thương thật',
+          quote: '“Đừng để màn hình chia cắt sự thấu cảm giữa con người!”', icon: '📱💬⚡'
+        },
+        digital_2: {
+          bg1: '#e0f2fe', bg2: '#bae6fd', accent: '#165b53', badge: 'EKIP 01 · TRANH CỔ ĐỘNG',
+          title: 'ỨNG XỬ CÓ VĂN HÓA TRÊN MẠNG XÃ HỘI', sub: 'Nói lời tử tế · Kiểm chứng thông tin',
+          quote: '“Mỗi bình luận văn minh là một hạt mầm thiện lành.”', icon: '🌐🤝✨'
+        },
+        equal_1: {
+          bg1: '#fee2e2', bg2: '#fecaca', accent: '#9b1b1f', badge: 'EKIP 02 · TRANH CỔ ĐỘNG',
+          title: 'BÌNH ĐẲNG GIỚI – NHỊP CẦU HẠNH PHÚC', sub: '“Tất cả mọi người sinh ra đều có quyền bình đẳng”',
+          quote: '“Tôn trọng sự khác biệt và quyền lựa chọn của mỗi cá nhân.”', icon: '⚖️🌸❤️'
+        },
+        equal_2: {
+          bg1: '#ffedd5', bg2: '#fed7aa', accent: '#b7242a', badge: 'EKIP 02 · POSTER TRUYỀN THÔNG',
+          title: 'BÌNH ĐẲNG GIỚI: CHẤM DỨT BẠO LỰC', sub: 'Vun đắp yêu thương · Sẻ chia trách nhiệm',
+          quote: '“Cùng học tập, cùng cống hiến, cùng dựng xây hạnh phúc.”', icon: '👨‍👩‍👧‍👦🌟🕊️'
+        },
+        green_1: {
+          bg1: '#dcfce7', bg2: '#bbf7d0', accent: '#165b53', badge: 'EKIP 03 · HOẠT ĐỘNG THỰC TẾ',
+          title: 'CHIẾN DỊCH DỌN RÁC BỜ BIỂN VIỆT NAM', sub: 'Thanh niên hành động vì đại dương xanh',
+          quote: '“Giảm rác thải nhựa – Trả lại màu xanh cho biển quê hương.”', icon: '🌊♻️🐢'
+        },
+        green_2: {
+          bg1: '#ecfccb', bg2: '#d9f99d', accent: '#165b53', badge: 'EKIP 03 · SỐNG XANH BỀN VỮNG',
+          title: 'TRỒNG CÂY XANH – GIỮ MÀU XANH ĐẤT VIỆT', sub: 'Từ thói quen nhỏ đến trách nhiệm thế hệ trẻ',
+          quote: '“Gieo một mầm xanh hôm nay, gặt bầu trời trong lành mai sau.”', icon: '🌱🌳🌏'
+        }
+      };
+
+      const cfg = configs[key] || configs.digital_1;
+      const grad = ctx.createLinearGradient(0, 0, c.width, c.height);
+      grad.addColorStop(0, cfg.bg1);
+      grad.addColorStop(1, cfg.bg2);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, c.width, c.height);
+
+      // Viền khung hoa văn vàng đồng & đỏ son
+      ctx.strokeStyle = '#d4a843';
+      ctx.lineWidth = 10;
+      ctx.strokeRect(16, 16, c.width - 32, c.height - 32);
+      ctx.strokeStyle = cfg.accent;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(28, 28, c.width - 56, c.height - 56);
+
+      // Huy hiệu trên cùng
+      ctx.fillStyle = cfg.accent;
+      ctx.beginPath();
+      ctx.roundRect(150, 52, 420, 40, 20);
+      ctx.fill();
+      ctx.fillStyle = '#faecc8';
+      ctx.font = 'bold 17px "Be Vietnam Pro", Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(cfg.badge, 360, 78);
+
+      // Biểu tượng minh họa lớn
+      ctx.font = '68px Arial, sans-serif';
+      ctx.fillText(cfg.icon, 360, 175);
+
+      // Tiêu đề chính trên tranh
+      ctx.fillStyle = cfg.accent;
+      ctx.font = 'bold 30px Georgia, serif';
+      ctx.fillText(cfg.title, 360, 245);
+
+      // Phụ đề
+      ctx.fillStyle = '#182832';
+      ctx.font = 'bold 21px "Be Vietnam Pro", Arial, sans-serif';
+      ctx.fillText(cfg.sub, 360, 292);
+
+      // Khung trích dẫn dưới
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.beginPath();
+      ctx.roundRect(70, 330, 580, 95, 16);
+      ctx.fill();
+      ctx.fillStyle = '#334155';
+      ctx.font = 'italic 19px Georgia, serif';
+      ctx.fillText(cfg.quote, 360, 385);
+
+      return c.toDataURL('image/png');
+    }
+
+    // Gắn tự động fallback cho tất cả thẻ <img> nếu không tìm thấy file cục bộ
+    document.querySelectorAll('img[data-img-key]').forEach(img => {
+      img.addEventListener('error', function () {
+        if (!this.dataset.fallbackApplied) {
+          this.dataset.fallbackApplied = 'true';
+          this.src = createArtFallback(this.dataset.imgKey);
+        }
+      });
+    });
+
+    // 2. MENU MOBILE & THANH TIẾN TRÌNH CUỘN TRANG
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('hidden'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.add('hidden'));
+    });
+
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    // Hiệu ứng xuất hiện mượt mà khi cuộn trang
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+    // 3. HIỆU ỨNG THẺ NGHIÊNG 3D NHẸ KHI DI CHUỘT
+    document.querySelectorAll('.card-3d-viet').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 768) return;
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // 4. HTML5 CANVAS: CÁNH HOA SEN & NHŨ VÀNG RƠI NHẸ NHÀNG + PHÁO HOA SEN KHI BẤM NÚT
+    const lotusCanvas = document.getElementById('lotusCanvas');
+    const lCtx = lotusCanvas.getContext('2d');
+    let petals = [];
+    let bursts = [];
+
+    function resizeLotusCanvas() {
+      lotusCanvas.width = window.innerWidth;
+      lotusCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeLotusCanvas);
+    resizeLotusCanvas();
+
+    function spawnAmbientPetals() {
+      petals = [];
+      const count = window.innerWidth < 640 ? 16 : 28;
+      for (let i = 0; i < count; i++) {
+        petals.push({
+          x: Math.random() * lotusCanvas.width,
+          y: Math.random() * lotusCanvas.height,
+          r: 4 + Math.random() * 6,
+          speedY: 0.35 + Math.random() * 0.65,
+          speedX: -0.3 + Math.random() * 0.6,
+          angle: Math.random() * Math.PI * 2,
+          spin: -0.02 + Math.random() * 0.04,
+          isGold: Math.random() > 0.45
+        });
+      }
+    }
+    spawnAmbientPetals();
+
+    function triggerLotusCelebration(originX, originY) {
+      const cx = originX || lotusCanvas.width / 2;
+      const cy = originY || lotusCanvas.height / 2;
+      for (let i = 0; i < 42; i++) {
+        const ang = (Math.PI * 2 * i) / 42 + Math.random() * 0.2;
+        const spd = 2.5 + Math.random() * 5.5;
+        bursts.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(ang) * spd,
+          vy: Math.sin(ang) * spd - 2,
+          life: 1,
+          size: 5 + Math.random() * 6,
+          color: i % 3 === 0 ? '#f0c96b' : (i % 3 === 1 ? '#f472b6' : '#dc2626')
+        });
+      }
+    }
+
+    function drawLotusPetal(ctx, x, y, r, angle, color) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(0, -r);
+      ctx.quadraticCurveTo(r * 0.85, 0, 0, r);
+      ctx.quadraticCurveTo(-r * 0.85, 0, 0, -r);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function animateLotus() {
+      lCtx.clearRect(0, 0, lotusCanvas.width, lotusCanvas.height);
+
+      // Cánh hoa sen & nhũ vàng rơi nhẹ
+      petals.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX + Math.sin(p.angle) * 0.25;
+        p.angle += p.spin;
+        if (p.y > lotusCanvas.height + 15) {
+          p.y = -15;
+          p.x = Math.random() * lotusCanvas.width;
+        }
+        const col = p.isGold ? 'rgba(212, 168, 67, 0.36)' : 'rgba(225, 112, 145, 0.32)';
+        drawLotusPetal(lCtx, p.x, p.y, p.r, p.angle, col);
+      });
+
+      // Hạt pháo hoa sen & kim tuyến chúc mừng
+      bursts = bursts.filter(b => b.life > 0.02);
+      bursts.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+        b.vy += 0.14;
+        b.life *= 0.96;
+        lCtx.globalAlpha = b.life;
+        drawLotusPetal(lCtx, b.x, b.y, b.size, b.vx * 0.5, b.color);
+        lCtx.globalAlpha = 1;
+      });
+
+      requestAnimationFrame(animateLotus);
+    }
+
+    // 5. WEB AUDIO API: ÂM THANH TRỐNG HỘI KHAI MẠC & CHUÔNG NGÂN VIỆT NAM
+    function playFestivalDrumSound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+
+        // Nhịp trống hội 3 tiếng hào hùng: Tùng - Tùng - Cắc!
+        const beats = [
+          { time: 0, freq: 115, dur: 0.32, gain: 0.5 },
+          { time: 0.22, freq: 110, dur: 0.35, gain: 0.55 },
+          { time: 0.48, freq: 145, dur: 0.55, gain: 0.65 }
+        ];
+
+        beats.forEach(b => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(b.freq, now + b.time);
+          osc.frequency.exponentialRampToValueAtTime(42, now + b.time + b.dur);
+
+          gain.gain.setValueAtTime(b.gain, now + b.time);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + b.time + b.dur);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + b.time);
+          osc.stop(now + b.time + b.dur);
+        });
+
+        // Tiếng chuông vàng ngân nhẹ sau nhịp trống
+        const bell = ctx.createOscillator();
+        const bellGain = ctx.createGain();
+        bell.type = 'triangle';
+        bell.frequency.setValueAtTime(880, now + 0.5);
+        bellGain.gain.setValueAtTime(0.14, now + 0.5);
+        bellGain.gain.exponentialRampToValueAtTime(0.0008, now + 1.6);
+        bell.connect(bellGain);
+        bellGain.connect(ctx.destination);
+        bell.start(now + 0.5);
+        bell.stop(now + 1.6);
+      } catch (err) {
+        // Bỏ qua nếu trình duyệt chặn audio
+      }
+    }
+
+    document.getElementById('drumFestivalBtn').addEventListener('click', function (e) {
+      playFestivalDrumSound();
+      const stage = document.getElementById('heroStage');
+      stage.classList.remove('drum-shake-active');
+      void stage.offsetWidth;
+      stage.classList.add('drum-shake-active');
+      triggerLotusCelebration(e.clientX, e.clientY);
+      showToast('Khai hội Hoa Hậu Tiếng Nói!', 'Tiếng trống đồng vang lên – Chúc 3 Ekip tự tin tỏa sáng bản lĩnh ngôn từ Việt Nam!');
+    });
+
+    // 6. MODAL VÒNG THI ỨNG XỬ HOA HẬU & ĐỒNG HỒ 60 GIÂY
+    const qnaData = [
+      {
+        badge: 'VÒNG THI ỨNG XỬ · EKIP 01',
+        title: 'Digital Generation – Thế hệ Công dân Số',
+        questions: [
+          'Nếu chứng kiến một bạn học bị "ném đá" hội đồng trên mạng xã hội vì một thông tin chưa kiểm chứng, tiếng nói của em sẽ làm gì để bảo vệ sự thật và lòng nhân ái?',
+          'Theo em, làm thế nào để giữ gìn sự trong sáng của tiếng Việt và nét thanh lịch của người Việt trẻ trên không gian mạng hiện nay?'
+        ],
+        points: [
+          'Mở đầu: Khẳng định mạng xã hội là công cụ kết nối trí tuệ, nhưng giá trị cốt lõi nằm ở văn hóa ứng xử của người sử dụng.',
+          'Luận điểm 1: Thực hành quy tắc "Kiểm chứng trước – Chia sẻ sau", không tiếp tay cho tin giả và bình luận công kích.',
+          'Luận điểm 2: Dẫn chứng thực tế từ các chiến dịch truyền thông tích cực của học sinh hoặc Bộ Quy tắc ứng xử trên mạng xã hội.',
+          'Thông điệp kết: Dùng tiếng nói văn minh để biến không gian số thành nhịp cầu sẻ chia thay vì bức tường ngăn cách.'
+        ]
+      },
+      {
+        badge: 'VÒNG THI ỨNG XỬ · EKIP 02',
+        title: 'Equal Voices – Tiếng nói Bình đẳng & Nhân văn',
+        questions: [
+          'Nhiều người cho rằng câu nói "Con trai phải mạnh mẽ, con gái nên dịu dàng" chỉ là lời khen vô hại. Em có đồng tình với quan điểm này không? Vì sao?',
+          'Nếu được gửi một thông điệp đến các bạn nam và nữ trong lớp về sự sẻ chia trách nhiệm, em sẽ nói điều gì?'
+        ],
+        points: [
+          'Mở đầu: Nhắc lại tư tưởng nhân văn "Tất cả mọi người sinh ra đều có quyền bình đẳng" làm nền tảng cho mọi cơ hội phát triển.',
+          'Luận điểm 1: Nhận diện các định kiến giới tinh vi ẩn sau những lời khen hoặc khuôn mẫu nghề nghiệp, vai trò gia đình.',
+          'Luận điểm 2: Bình đẳng giới không phải là cào bằng mà là trao quyền tự do lựa chọn và tôn trọng năng lực riêng của mỗi người.',
+          'Thông điệp kết: Khi cả nam và nữ cùng thấu hiểu và sẻ chia, bình đẳng giới sẽ thực sự trở thành nhịp cầu hạnh phúc.'
+        ]
+      },
+      {
+        badge: 'VÒNG THI ỨNG XỬ · EKIP 03',
+        title: 'Green Future – Trách nhiệm Xanh của Thế hệ Trẻ',
+        questions: [
+          'Có ý kiến cho rằng việc học sinh mang bình nước cá nhân hay hạn chế túi ni-lông chỉ là "muối bỏ bể" trước biến đổi khí hậu. Em sẽ phản biện như thế nào?',
+          'Làm thế nào để biến "sống xanh" từ một trào lưu chụp ảnh trên mạng thành thói quen bền vững trong trường học?'
+        ],
+        points: [
+          'Mở đầu: Khẳng định bảo vệ môi trường không phải lựa chọn nhất thời mà là trách nhiệm sinh tồn của thế hệ trẻ.',
+          'Luận điểm 1: Sức mạnh của hiệu ứng cộng hưởng – hàng triệu hành động nhỏ mỗi ngày sẽ tạo nên sự chuyển dịch lớn cho hệ sinh thái.',
+          'Luận điểm 2: Dẫn chứng từ các chiến dịch dọn rác bờ biển, trồng cây xanh và tái chế học đường thiết thực.',
+          'Thông điệp kết: Yêu Tổ quốc bắt đầu từ việc giữ gìn từng tấc đất, dòng sông và bầu không khí xanh quanh ta.'
+        ]
+      }
+    ];
+
+    let currentTeamIndex = 0;
+    let currentQuestionIndex = 0;
+    let timerInterval = null;
+    let timeLeft = 60;
+
+    function renderQnAContent() {
+      const item = qnaData[currentTeamIndex];
+      document.getElementById('qnaBadge').textContent = item.badge;
+      document.getElementById('qnaTitle').textContent = item.title;
+      document.getElementById('qnaQuestionText').textContent = item.questions[currentQuestionIndex];
+      const list = document.getElementById('qnaPointsList');
+      list.innerHTML = item.points.map(p => `<li>${p}</li>`).join('');
+    }
+
+    function openQnAModal(teamIdx) {
+      currentTeamIndex = teamIdx;
+      currentQuestionIndex = 0;
+      resetQnATimer();
+      renderQnAContent();
+      const modal = document.getElementById('qnaModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function nextQnAQuestion() {
+      const total = qnaData[currentTeamIndex].questions.length;
+      currentQuestionIndex = (currentQuestionIndex + 1) % total;
+      resetQnATimer();
+      renderQnAContent();
+    }
+
+    function closeQnAModal() {
+      clearInterval(timerInterval);
+      const modal = document.getElementById('qnaModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function startQnATimer() {
+      clearInterval(timerInterval);
+      const display = document.getElementById('timerDisplay');
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        display.textContent = timeLeft + 's';
+        if (timeLeft <= 10) {
+          display.classList.remove('bg-ngocBich');
+          display.classList.add('bg-doSon');
+        }
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          display.textContent = 'Hết giờ!';
+          playFestivalDrumSound();
+          showToast('Hết 60 giây ứng xử!', 'Chúc mừng thí sinh đã hoàn thành phần trình bày quan điểm trên sân khấu!');
+        }
+      }, 1000);
+    }
+
+    function resetQnATimer() {
+      clearInterval(timerInterval);
+      timeLeft = 60;
+      const display = document.getElementById('timerDisplay');
+      display.textContent = '60s';
+      display.classList.remove('bg-doSon');
+      display.classList.add('bg-ngocBich');
+    }
+
+    // 7. LIGHTBOX XEM PHÓNG TO TRANH & ẢNH
+    function openLightbox(imgKey, title, desc) {
+      const sourceImg = document.querySelector(`img[data-img-key="${imgKey}"]`);
+      const lbImg = document.getElementById('lightboxImg');
+      lbImg.src = sourceImg ? sourceImg.src : createArtFallback(imgKey);
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightboxDesc').textContent = desc;
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 8. CAM KẾT HÀNH ĐỘNG & PHIẾU GỬI TIẾNG NÓI
+    function pledgeAction(btn, countId) {
+      const countEl = document.getElementById(countId);
+      const current = parseInt(countEl.textContent, 10) || 0;
+      countEl.textContent = current + 1;
+      const rect = btn.getBoundingClientRect();
+      triggerLotusCelebration(rect.left + rect.width / 2, rect.top);
+      showToast('Đã ghi nhận cam kết hành động!', 'Cảm ơn bạn đã góp thêm một tiếng nói tích cực lan tỏa giá trị tốt đẹp.');
+    }
+
+    function toggleQuickForm() {
+      const input = document.getElementById('studentTeam');
+      input.focus();
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    document.getElementById('voiceSubmitForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const team = document.getElementById('studentTeam').value.trim();
+      const topic = document.getElementById('studentTopic').value;
+      triggerLotusCelebration();
+      playFestivalDrumSound();
+      showToast('Gửi sản phẩm thành công!', `Cảm ơn ${team} (${topic}) đã gửi tiếng nói tham dự dự án Ngữ văn 11!`);
+      this.reset();
+    });
+
+    // Hộp thông báo Toast
+    let toastTimeout = null;
+    function showToast(title, body) {
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastBody').textContent = body;
+      const banner = document.getElementById('toastBanner');
+      banner.classList.remove('hidden');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(hideToast, 4500);
+    }
+
+    function hideToast() {
+      document.getElementById('toastBanner').classList.add('hidden');
+    }
+
+    // Khởi chạy vòng lặp animation sau khi tải trang
+    window.onload = function () {
+      animateLotus();
+    };
+  </script>
+</body>
+</html>
